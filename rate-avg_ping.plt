@@ -5,6 +5,9 @@ set ylabel 'Задержка (Last ping), мс'
 set style data linespoints
 set grid ytics mytics xtics mxtics
 
+set xtics autofreq 20
+set ytics autofreq 20
+
 print "script name : ", ARG0
 print "input file  : ", ARG1
 
