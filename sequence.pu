@@ -1,0 +1,27 @@
+@startuml
+actor "Discord-аккаунт 1" as user1
+participant "Discord\nВеб-приложение" as app1
+participant "Discord\nМобильное-приложение" as app2
+actor "Discord-аккаунт 2" as user2
+
+user1 -> app1 : Начать звонок с\nDiscord-аккаунт 2
+app1 -> app2 : Запрос на звонок с\nпользователем
+app2 -> user2 : Уведомить о звонке
+user2 --> app2 : Принять звонок
+app2 --> app1 : Ответ о принятии звонка
+user1 -> app1 : Открыть окно с\nтекущей задержкой
+app1 --> user1 : Показать окно с\nзадержкой (Last ping)
+loop Звонок
+    user1 -> app1 : Издать звук
+    app1 -> app2 : Послать звук
+    app2 -> user2 : Воспроизвести звук
+    app2 --> app1 : Послать подтверждение\nо получении
+    app1 -> app1 : Пересчитать задержку\n(Last ping)
+    app1 --> user1 : Отобразить текущую\nзадержку (Last ping)
+end
+user1 -> app1 : Завершить звонок
+app1 -> app2 : Уведомить о выходе\nDiscord-аккаунта 1\nо выходе со звонка
+app2 -> user2 : Отобразить актуальный\nсписок участников звонка
+user2 -> app2 : Завершить звонок
+app2 -> app2 : Завершить звонок
+@enduml
