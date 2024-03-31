@@ -1,0 +1,16 @@
+@startuml
+
+node "VM" as client1 {
+    node "OS" {
+        node "Web browser" {
+            [Discord\nWeb-Application] as discord1
+        }
+    }
+}
+
+node "Smarphone" as client2 {
+    [Discord\nApplication] as discord2
+}
+
+discord1 - discord2 : "Discord Voice Call Protocol"
+@enduml
